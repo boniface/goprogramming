@@ -19,6 +19,7 @@ package main
 import "fmt"
 
 func main() {
+	HelloWorld()
 	flowIfElse(10)
 	flowElseIf(5)
 	var newSalary, reason = increaseSalary(10)
@@ -27,11 +28,36 @@ func main() {
 	ForLoop()
 }
 
+// 1. Hello World
+
+func HelloWorld() {
+	fmt.Println(" Hello World")
+}
+
+// 2. varriables
+
+func Variables() {
+	// Ways to declare variable and assign values 3
+	var name string = "Developer" //delcare with var
+	fmt.Println(name)
+	field := "Teaching Industry" // Not specifying var
+	fmt.Println(field)
+
+}
+
+// 3. Primitive Data Types
+
+func DataTypes() {
+
+}
+
+// 4. Data Type Conversion
+
 // This is the end of a Go Program
 
 //2. Basics
 
-// 3. Operators
+// 3. Arithmetic  Operators
 // +, -, /, *, %
 func add(number1 int, number2 int) int {
 	var sum int = number1 + number2
@@ -164,7 +190,7 @@ func increaseSalaryWithSwitch(salary int) (int, string) {
 	return newSalary, reason
 }
 
-// for
+// for Loops
 
 func ForLoop() {
 	for i := 0; i <= 10; i++ {
@@ -177,7 +203,7 @@ func ForLoop() {
 	}
 }
 
-func EnhanceForLoop() {
+func InfiniteLoop() {
 	// break, continue
 	for {
 		fmt.Println("")
@@ -185,19 +211,51 @@ func EnhanceForLoop() {
 
 }
 
+func simulate_while_loop() {
+
+}
+
+func simulate_do_while_loop() {
+
+}
+
 // 5. Data Structures
 
 // 5.1 Array
 
+func arrays() {
+
+}
+
 // 5.2 Two D Array
 
-//  5.3 Map
+func TwoDarrays() {
+
+}
 
 // 5.4 Slice
 
+func slices() {
+
+}
+
+//  5.3 Map
+
+func Maps() {
+
+}
+
 // 5.6 Struct
 
+func strusts() {
+
+}
+
 //6. Pointers
+
+func pointers() {
+
+}
 
 // First Session Stuff
 func firstSessionWork() {
