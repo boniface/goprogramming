@@ -26,6 +26,7 @@ func main() {
 	fmt.Println(" Your New Salary is ", newSalary)
 	fmt.Println("Here is the Reason why  ", reason)
 	ForLoop()
+	simulate_while_loop()
 }
 
 // 1. Hello World
@@ -191,6 +192,12 @@ func increaseSalaryWithSwitch(salary int) (int, string) {
 }
 
 // for Loops
+/**
+for i := 0; i <= 10; i++
+
+Go for loop has three sections: initialization, the condition, and effect or action. All
+sections are optional.
+*/
 
 func ForLoop() {
 	for i := 0; i <= 10; i++ {
@@ -207,16 +214,46 @@ func InfiniteLoop() {
 	// break, continue
 	for {
 		fmt.Println("")
+		break
 	}
-
 }
 
 func simulate_while_loop() {
-
+	/**
+	 a = 0
+	while( a > b) {
+	statement;
+	 a++
+	}
+	*/
+	var a = 0
+	var b = 10
+	for {
+		if a > b {
+			break
+		}
+		fmt.Println(" Loop Count", a)
+		a++
+	}
 }
 
 func simulate_do_while_loop() {
+	/**
+	do{
+	statements
+	}while(condition)
+	*/
 
+	var i = 0
+	condition := true
+	for ok := true; ok; ok = condition {
+		if i > 10 {
+			condition = false
+		}
+		fmt.Print(i, " ")
+		i++
+	}
+	fmt.Println()
 }
 
 // 5. Data Structures
