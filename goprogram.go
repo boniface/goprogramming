@@ -19,20 +19,18 @@ package main
 import "fmt"
 
 func main() {
-	HelloWorld()
-	flowIfElse(10)
-	flowElseIf(5)
-	var newSalary, reason = increaseSalary(10)
-	fmt.Println(" Your New Salary is ", newSalary)
-	fmt.Println("Here is the Reason why  ", reason)
-	ForLoop()
-	simulate_while_loop()
+	pointers()
+
 }
 
 // 1. Hello World
 
 func HelloWorld() {
 	fmt.Println(" Hello World")
+	fmt.Println(" This is My name ")
+	println("The is a Print ")
+	fmt.Println("Thies ")
+
 }
 
 // 2. varriables
@@ -49,6 +47,10 @@ func Variables() {
 // 3. Primitive Data Types
 
 func DataTypes() {
+	var a int = 8
+	var b int8 = 20
+
+	fmt.Println(" the Values are ", a, b)
 
 }
 
@@ -155,8 +157,8 @@ func increaseSalary(salary int) (int, string) {
 		newSalary = salary * 5
 		reason = "Your have Some Money"
 	} else if salary > 5000 && salary < 10000 {
-		reason = "You Work Hard, you deserve it"
-
+		newSalary = salary * 2
+		reason = "You have some Money, you get less raise"
 	} else {
 		newSalary = salary * 1
 		reason = "Your Have enough Money "
@@ -174,18 +176,14 @@ func increaseSalaryWithSwitch(salary int) (int, string) {
 	case salary < 1000:
 		newSalary = salary * 10
 		reason = "Your really broke, you deserve it"
-	case salary > 1000 && salary < 10000:
-		newSalary = salary * 10
-		reason = "Your really broke, you deserve it"
-
-	case salary > 1000 && salary < 10000:
-		newSalary = salary * 10
-		reason = "Your really broke, you deserve it"
-	case salary > 5000 && salary < 10000:
-		newSalary = salary * 10
+	case salary > 1000 && salary < 5000:
+		newSalary = salary * 5
+		reason = " You Got a raise"
+	case salary > 5000:
+		newSalary = salary * 2
 		reason = "Your really broke, you deserve it"
 	default:
-		newSalary = salary * 10
+		newSalary = salary * 1
 		reason = "Your really broke, you deserve it"
 	}
 	return newSalary, reason
@@ -201,7 +199,7 @@ sections are optional.
 
 func ForLoop() {
 	for i := 0; i <= 10; i++ {
-		if i == 0 {
+		if i > 5 {
 			fmt.Println(" Hello World")
 			break
 		} else {
@@ -213,14 +211,15 @@ func ForLoop() {
 func InfiniteLoop() {
 	// break, continue
 	for {
-		fmt.Println("")
+		fmt.Println(" Print Something here!!")
 		break
 	}
 }
 
 func simulate_while_loop() {
 	/**
-	 a = 0
+	a = 0
+	b = 10
 	while( a > b) {
 	statement;
 	 a++
@@ -244,6 +243,9 @@ func simulate_do_while_loop() {
 	}while(condition)
 	*/
 
+	/// terminate when a > 5 < 10
+	//
+
 	var i = 0
 	condition := true
 	for ok := true; ok; ok = condition {
@@ -259,39 +261,128 @@ func simulate_do_while_loop() {
 // 5. Data Structures
 
 // 5.1 Array
-
 func arrays() {
+	var numbers = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	// array with numbers 1..10
+	// Print for Me Just Even numbers
+	// numbers[i]%2 == 0
+	// else Print Odd Numbers
+	var length = len(numbers)
+	for i := 0; i < length; i++ {
+		if numbers[i]%2 != 0 {
+			fmt.Print(" ", numbers[i])
+		}
 
+	}
 }
 
 // 5.2 Two D Array
 
-func TwoDarrays() {
+func TwoDArrays() {
+	var arr2D = [3][3]int{
+		{10, 20, 30},
+		{40, 60, 90},
+		{20, 70, 20},
+	}
+	fmt.Println(arr2D[0][0])
+	fmt.Println(arr2D[0][2])
 
-}
-
-// 5.4 Slice
-
-func slices() {
-
+	// Loop Through a 2 D Array
+	var rowLength = len(arr2D)
+	var colLength = len(arr2D[0])
+	for i := 0; i < rowLength; i++ {
+		for j := 0; j < colLength; j++ {
+			fmt.Printf("%d,", arr2D[i][j])
+		}
+		fmt.Println("")
+	}
 }
 
 //  5.3 Map
 
 func Maps() {
+	var phone = map[string]int{
+		"john":  234374,
+		"david": 872149044,
+		"mary":  9821309312,
+	}
+
+	for key, phoneNumber := range phone {
+		fmt.Println("The Index", key, "The Number", phoneNumber)
+	}
+
+	fmt.Println(" The Number for John", phone["john"])
+	delete(phone, "john")
+	fmt.Println(" New Number For John", phone["john"])
+	phone["peter"] = 111121
+	fmt.Println(" The Number for Peter", phone["peter"])
+}
+
+// 5.4 Slice
+
+func slices() {
+	var numbers = []int{1, 2, 3, 4, 5}
+	fmt.Println(" The Slot 0 is ", numbers[0])
+	numbers = append(numbers, 100)
+	numbers = append(numbers, 200)
+
+	fmt.Println(" The Slice is ", numbers)
+	fmt.Println(numbers[1:3]) // 1..3
+	fmt.Println(numbers[:3])  // 0..3
+	fmt.Println(numbers[3:])  // 0..3
+
+	// Loop Through the Slice
+	for index, number := range numbers {
+		fmt.Println("The Index", index, "The Number", number)
+	}
 
 }
 
 // 5.6 Struct
 
-func strusts() {
+func structs() {
+	type Person struct {
+		name string
+		age  int
+	}
+
+	type ComputerNode struct {
+		ipaddress string
+		macaddess string
+		processor int
+	}
+
+	var person1 = Person{"John", 10}
+	var person2 = Person{"peter", 28}
+	var person3 = Person{"mary", 18}
+	var person4 = Person{"jenny", 27}
+
+	var persons = []Person{person1, person2, person3}
+	persons = append(persons, person4)
+
+	for index, person := range persons {
+		fmt.Println("At Index", index, " We have ", person)
+	}
 
 }
 
 //6. Pointers
+// Each variable Memory Address &
+//
 
 func pointers() {
+	var age int = 10
 
+	//var ipaddr string
+	//var name string
+	// pointer is a variable that stores and adress
+	var agepointer *int = &age
+	fmt.Println(" the Address of age is ", &age)
+	fmt.Println(" the Value of age is ", age)
+	fmt.Println(" the The Pointer is ", agepointer)
+	fmt.Println(" Print the Pointer Value is ", *agepointer)
+	//fmt.Println(" the Address of ipaddr is ",&ipaddr)
+	//fmt.Println(" the Address of aga is ",&name)
 }
 
 // First Session Stuff
