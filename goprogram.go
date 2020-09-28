@@ -19,7 +19,22 @@ package main
 import "fmt"
 
 func main() {
-	pointers()
+	var a int = 10
+	var b int = 5
+	var result1, result2 = pointerFunction(&a, b)
+
+	fmt.Println(" Initial Value of a is ", a)
+	fmt.Println(" Initial Value of b is ", b)
+
+	fmt.Println(" The result1 is  ", result1)
+	fmt.Println(" The result2 is  ", result2)
+
+	fmt.Println(" Final  Value of a is ", a)
+	fmt.Println(" Final  Value of b is ", b)
+
+	//pointers()
+	//HelloWorld()
+	//structs()
 
 }
 
@@ -341,11 +356,22 @@ func slices() {
 // 5.6 Struct
 
 func structs() {
+
 	type Person struct {
 		name string
 		age  int
 	}
 
+	type University struct {
+		name    string
+		address string
+		acronym string
+	}
+
+	var cput = University{"Cape Peninsula University of Technology", "2 Symphony Way BV, CT, WP", "CPUT"}
+	var uct = University{acronym: "UCT", name: "University of Cape Town", address: " Behind the Mountain"}
+	fmt.Println(" Full Name of ", uct.acronym, " is ", uct.name)
+	fmt.Println(" Full name of ", cput.acronym, " is ", cput.name)
 	type ComputerNode struct {
 		ipaddress string
 		macaddess string
@@ -371,18 +397,60 @@ func structs() {
 //
 
 func pointers() {
+	// Computers have Memory broken down into slots
+	// | 0xyte6723t | oxjhsdjdjd763 | 0x67jue86738 |..... (n-1) <-- Addresses
+	// |    10      |    5          |     2        | ....(n-1)   <-- Values
+	// & means "Address of" operator
+
 	var age int = 10
+	var age1 int = 5
+	var age3 int = 2
+
+	var agePointer *int = &age
+	var age1Pointer *int = &age1
+	var age2Pointer *int = &age3
+
+	var age4 int
+
+	fmt.Println(" The Value of age", age)
+	fmt.Println(" The Value of Age1", age1)
+	fmt.Println(" The Value of age3", age3)
+
+	fmt.Println(" The Address of age", &age)
+	fmt.Println(" The Address of Age1", &age1)
+	fmt.Println(" The Address of age3", &age3)
+
+	fmt.Println(" The Pointer Address of age", agePointer)
+	fmt.Println(" The Pointer Address of Age1", age1Pointer)
+	fmt.Println(" The Pointer Address of age3", age2Pointer)
+
+	fmt.Println(" The Default value  age4", age4)
+
+	// Print the Value that is at a Particular Address
+	// We use a Deference Operator  (*)
+
+	fmt.Println(" The Value at the Pointer Address of age", *agePointer)
+	fmt.Println(" The Value at the Pointer Address of Age1", *age1Pointer)
+	fmt.Println(" The Value at the Pointer Address of age3", *age2Pointer)
 
 	//var ipaddr string
 	//var name string
 	// pointer is a variable that stores and adress
-	var agepointer *int = &age
-	fmt.Println(" the Address of age is ", &age)
-	fmt.Println(" the Value of age is ", age)
-	fmt.Println(" the The Pointer is ", agepointer)
-	fmt.Println(" Print the Pointer Value is ", *agepointer)
-	//fmt.Println(" the Address of ipaddr is ",&ipaddr)
+	//var agepointer *int = &age
+	//fmt.Println(" the Address of age is ", &age)
+	//fmt.Println(" the Value of age is ", age)
+	//fmt.Println(" the The Pointer is ", agepointer)
+	//fmt.Println(" Print the Pointer Value is ", *agepointer)
+	////fmt.Println(" the Address of ipaddr is ",&ipaddr)
 	//fmt.Println(" the Address of aga is ",&name)
+}
+
+func pointerFunction(a *int, b int) (int, int) {
+	// b is a copy
+	// a is a reference
+	var result1 = *a
+	var result2 = b * 10
+	return result1, result2
 }
 
 // First Session Stuff
