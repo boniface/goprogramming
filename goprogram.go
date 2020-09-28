@@ -21,10 +21,11 @@ import "fmt"
 func main() {
 	var a int = 10
 	var b int = 5
-	var result1, result2 = pointerFunction(&a, b)
 
 	fmt.Println(" Initial Value of a is ", a)
 	fmt.Println(" Initial Value of b is ", b)
+
+	var result1, result2 = pointerFunction(&a, b)
 
 	fmt.Println(" The result1 is  ", result1)
 	fmt.Println(" The result2 is  ", result2)
@@ -448,6 +449,7 @@ func pointers() {
 func pointerFunction(a *int, b int) (int, int) {
 	// b is a copy
 	// a is a reference
+	*a = 100
 	var result1 = *a
 	var result2 = b * 10
 	return result1, result2
